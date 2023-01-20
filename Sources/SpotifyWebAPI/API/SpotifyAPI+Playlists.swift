@@ -841,6 +841,7 @@ public extension SpotifyAPI where
             let userId = try SpotifyIdentifier(
                 uri: userURI, ensureCategoryMatches: [.user]
             ).id
+                .addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
             
             return self.apiRequest(
                 path: "/users/\(userId)/playlists",
